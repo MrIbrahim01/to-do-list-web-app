@@ -6,13 +6,24 @@ import 'dotenv/config';
 
 const app = express();
 const port = 3000;
-
+const uri = process.env.MONGODB_URL + "/todolistDB";
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 
 // const items = ["eat", "sleep", "code"];
 // const workItems = [];
-mongoose.connect(process.env.MONGODB_URL+"/todolistDB");
+
+const connectDB = async () => {
+    try {
+      const conn = await mongoose.connect(process.env.MONGODB_URL);
+      console.log(`MongoDB Connected: ${conn.connection.host}`);
+    } catch (error) {
+      console.log(error);
+      process.exit(1);
+    }
+  }
+
+// mongoose.connect(uri);
 
 const itemsSchema = {
     name : String
@@ -125,7 +136,8 @@ app.post("/delete", (req, res)=>{
   })
 
 
-
-app.listen(port, () => {
-    console.log(`Server is running at port ${port}.`)
-});
+  connectDB().then(() => {
+    app.listen(port, () => {
+        console.log("listening for requests");
+    })
+})
