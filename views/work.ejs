@@ -1,0 +1,79 @@
+<%- include("partials/header.ejs") %>
+<div class="heading-container head-box">
+    <div class="heading">
+        <h1><%= listTitle %></h1>
+
+    </div>
+</div>
+
+<div class="box">
+    <%for(var i = 0; i<newItems.length; i++){%>
+
+        <div class="item">
+            <input type="checkbox" name="tick" id="tick">
+            <p class="item-para"><%=newItems[i]%></p>
+        </div>
+    <%}%>
+    <form action="/work" method="POST" class="item ms-4">
+        <input type="text" placeholder="New Item" name="newItem" autocomplete="off">
+        <button type="submit" id="submit" name="list">+</button>
+    </form>
+</div>
+
+<!-- <div class="heading-container head-box">
+    <div class="heading">
+        <%# const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];%>
+        <%# const weekDaysNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] %>
+        <%# const date = new Date() %>
+        <h1><%#= weekDaysNames[date.getDay()] + ", " + monthNames[date.getMonth()] + " " + date.getDate() %></h1>
+
+    </div>
+</div>
+
+<div class="boxey">
+
+
+
+
+    <%#for(var i = 0; i<newItem.length; i++){%>
+
+                <div class="boxey1">
+                    <div class="item">
+                        <input type="checkbox" name="tick" id="tick">
+                        <p class="item-para"><%#=newItem[i]%></p>
+                    </div>
+                </div> 
+
+
+    <%#}%>
+
+
+</div>
+
+
+     -->
+
+<%- include("partials/footer.ejs") %>
+
+
+<!-- <script>
+    
+var newTodoItemed = newItem;
+var tag = document.createElement("div");
+var checkbox = document.createElement("input");
+var para = document.createElement("p");
+var text = document.createTextNode('apple');
+var element = document.createElement("div");
+para.appendChild(text);
+// console.log(newTodoItem);
+tag.appendChild(checkbox);
+tag.appendChild(text);
+// var element = document.getElementsByClassName("boxey");%>
+element.classList.add("boxey");
+// var element = document.getElementsByClassName("boxey1");%>
+tag.classList.add("item");
+element.appendChild(tag);
+
+</script> --> 

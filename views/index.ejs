@@ -1,0 +1,44 @@
+<%- include("partials/header.ejs") %>
+<!-- <div class="heading-container head-box">
+    <div class="heading">
+        <%const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];%>
+        <% const weekDaysNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] %>
+        <% const date = new Date() %>
+        <h1><%= weekDaysNames[date.getDay()] + ", " + monthNames[date.getMonth()] + " " + date.getDate() %></h1>
+
+    </div>
+</div> -->
+<div class="heading-container head-box">
+    <div class="heading">
+        <h1><%= listTitle %></h1>
+
+    </div>
+</div>
+
+<div class="box">
+
+    <%newItems.forEach((item)=>{%>
+        <form action="/delete" method="POST">
+            
+            <div class="item">
+                <input type="checkbox" name="checkbox" id="tick" onchange="this.form.submit()" value="<%=item._id%>">
+                <p class="item-para"><%= item.name%></p>
+                <input type="hidden" name="listName" value="<%= listTitle %>">
+            </div>
+
+        </form>
+    <%})%>
+    <form action="/" method="POST" class="item ms-4">
+        <input type="text" placeholder="New Item" name="newItem" autocomplete="off">
+        <button type="submit" id="submit" name="list" value="<%= listTitle %>">+</button>
+    </form>
+</div>
+
+
+
+
+<%- include("partials/footer.ejs") %>
+
+
