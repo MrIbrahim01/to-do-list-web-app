@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 // const items = ["eat", "sleep", "code"];
 // const workItems = [];
-mongoose.connect(MONGODB_URL+"/todolistDB");
+mongoose.connect(process.env.MONGODB_URL+"/todolistDB");
 
 const itemsSchema = {
     name : String
