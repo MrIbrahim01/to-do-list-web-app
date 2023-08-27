@@ -2,6 +2,7 @@ import bodyParser from "body-parser";
 import express from "express";
 import mongoose from "mongoose";
 import lodash from "lodash";
+import 'dotenv/config';
 
 const app = express();
 const port = 3000;
@@ -11,7 +12,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 // const items = ["eat", "sleep", "code"];
 // const workItems = [];
-mongoose.connect("mongodb+srv://admin-ibrahim:test123@cluster0.mp4tud6.mongodb.net/todolistDB");
+mongoose.connect(process.env.MONGODB_URL+"/todolistDB");
 
 const itemsSchema = {
     name : String
